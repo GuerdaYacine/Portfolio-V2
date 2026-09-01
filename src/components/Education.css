@@ -1,0 +1,11 @@
+.education__list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.education__entry h3 {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}

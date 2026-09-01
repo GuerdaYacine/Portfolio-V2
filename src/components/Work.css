@@ -1,0 +1,37 @@
+.work {
+  margin-top: 56px;
+}
+
+.work__list {
+  list-style: none;
+  margin: 0 0 45px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.work__item {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  width: fit-content;
+}
+
+.work__title {
+  font-family: var(--serif-display);
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.work__item:hover .work__title,
+.work__item:focus-visible .work__title {
+  color: var(--text-muted);
+}
+
+.work__year {
+  color: var(--text-faint);
+}

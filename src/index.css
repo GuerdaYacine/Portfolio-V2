@@ -1,0 +1,355 @@
+:root {
+  /* -- palette : noir pur, encre ivoire, gris pour le secondaire -- */
+  --bg: #050505;
+  --text: #f2f0ea;
+  --text-muted: #7d7b76;
+  --text-faint: #4a4a47;
+  --border: #494949a1;
+  --border-strong: #494949a1;
+
+  /* -- typographie -- */
+  --serif-display: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
+  --serif-body: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+
+  /* -- grille -- */
+  --pad: clamp(28px, 4vw, 56px);
+  --pad-left: clamp(18px, 2.4vw, 32px);
+  --pad-top: clamp(48px, 7vw, 96px);
+
+  color-scheme: dark;
+  color: var(--text);
+  background: var(--bg);
+  font: 20px/1.55 var(--serif-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100svh;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(242, 240, 234, 0.15);
+  color: var(--text);
+}
+
+/* -- typographie -- */
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid var(--text);
+  outline-offset: 4px;
+}
+
+/* -- label de section : petit titre + trait -- */
+
+.label {
+  display: inline-block;
+  width: fit-content;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  padding-bottom: 12px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.meta {
+  font-family: var(--serif-body);
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.arrow-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 17px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.arrow-link:hover,
+.arrow-link:focus-visible {
+  color: var(--text);
+}
+
+.arrow-link__glyph {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.arrow-link:hover .arrow-link__glyph,
+.arrow-link:focus-visible .arrow-link__glyph {
+  transform: translate(2px, -2px);
+}
+
+.arrow-link--back:hover .arrow-link__glyph,
+.arrow-link--back:focus-visible .arrow-link__glyph {
+  transform: translate(-2px, 0);
+}
+
+/* -- grille : hero en 3 colonnes (17/41.5/41.5), puis nav vide + contenu (17/83) -- */
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 2.5fr;
+}
+
+.col-nav {
+  grid-column: 1;
+  grid-row: 1;
+  border-right: 1px solid var(--border);
+}
+
+.col-nav__inner {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--pad) var(--pad) var(--pad) var(--pad-left);
+}
+
+.hero-main {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 100svh;
+  padding: var(--pad-top) var(--pad) var(--pad) var(--pad-left);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.col-contact {
+  grid-column: 3;
+  grid-row: 1;
+  min-height: 100svh;
+  padding: var(--pad-top) var(--pad) var(--pad) var(--pad-left);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav-spacer {
+  grid-column: 1;
+  border-right: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+}
+
+.nav-spacer--about {
+  grid-row: 2;
+}
+
+.nav-spacer--skills {
+  grid-row: 3;
+}
+
+.nav-spacer--education {
+  grid-row: 4;
+}
+
+#about {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+#skills {
+  grid-column: 2 / span 2;
+  grid-row: 3;
+}
+
+#education {
+  grid-column: 2 / span 2;
+  grid-row: 4;
+}
+
+@media (max-width: 980px) {
+  .layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .col-nav {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .col-nav__inner {
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-main {
+    border-right: none;
+    min-height: auto;
+  }
+
+  .col-contact {
+    min-height: auto;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-spacer {
+    display: none;
+  }
+}
+
+.section-block {
+  padding: clamp(64px, 9vw, 112px) var(--pad) clamp(64px, 9vw, 112px) var(--pad-left);
+  border-top: 1px solid var(--border);
+}
+
+/* -- footer -- */
+
+.site-footer {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 2.5fr;
+  align-items: center;
+  border-top: 1px solid var(--border);
+}
+
+.site-footer__brand {
+  padding: 22px var(--pad);
+  border-right: 1px solid var(--border);
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+.site-footer__social {
+  display: flex;
+  gap: 20px;
+  padding: 22px var(--pad);
+}
+
+.site-footer__social a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.site-footer__tagline {
+  padding: 22px var(--pad);
+  text-align: right;
+}
+
+.site-footer__social a:hover,
+.site-footer__social a:focus-visible {
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .site-footer__brand,
+  .site-footer__social,
+  .site-footer__tagline {
+    padding: 10px var(--pad-left);
+  }
+
+  .site-footer__social {
+    gap: 16px;
+  }
+
+  .site-footer__brand {
+    border-right: none;
+  }
+
+  .site-footer__tagline {
+    text-align: left;
+  }
+}
+
+/* -- reveal on scroll -- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

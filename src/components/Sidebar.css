@@ -1,0 +1,33 @@
+.sidebar__name {
+  font-family: var(--serif-display);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sidebar__nav a {
+  font-size: 15px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sidebar__nav a:hover,
+.sidebar__nav a:focus-visible {
+  color: var(--text);
+}
+
+@media (max-width: 980px) {
+  .sidebar__nav {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
