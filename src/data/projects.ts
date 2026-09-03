@@ -229,6 +229,17 @@ export const PROJECTS: Project[] = [
           'The project let me work across an application\'s whole lifecycle, from development and data management through to deployment and day-to-day operations.',
         ],
       },
+      {
+        heading: 'Try it yourself',
+        paragraphs: [
+          'The live app has open demo accounts for all three roles, so you can explore the admin dashboard, the professional space and the regular user experience without creating an account:',
+          'Admin — admin@laundrymap.com',
+          'Professional — professional@laundrymap.com',
+          'User — webmaster@laundrymap.com',
+          'Password for all three: password',
+          'Since these accounts are open to anyone, the app resets itself automatically every 2 hours: a script restores the database, the uploaded images, the app cache and the search index to a known clean state. So feel free to click around, edit things, delete a laundromat — whatever happens gets wiped and reset on its own.',
+        ],
+      },
     ],
   },
   {
