@@ -80,18 +80,23 @@ export function ProjectPage() {
               </div>
             </dl>
 
-            {project.link && (
-              <a
-                className="arrow-link"
-                href={project.link.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {project.link.label}{' '}
-                <span className="arrow-link__glyph">
-                  <IconArrowUpRight />
-                </span>
-              </a>
+            {project.links && project.links.length > 0 && (
+              <div className="project-links">
+                {project.links.map((link) => (
+                  <a
+                    key={link.href}
+                    className="arrow-link"
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {link.label}{' '}
+                    <span className="arrow-link__glyph">
+                      <IconArrowUpRight />
+                    </span>
+                  </a>
+                ))}
+              </div>
             )}
           </header>
 

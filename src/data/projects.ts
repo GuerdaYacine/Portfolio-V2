@@ -11,7 +11,7 @@ export type Project = {
   role: string
   stack: string
   lede: string
-  link?: { label: string; href: string }
+  links?: { label: string; href: string }[]
   images: string[]
   sections: ProjectSection[]
 }
@@ -126,10 +126,28 @@ export const PROJECTS: Project[] = [
     role: 'Developer · Personal project',
     stack: 'Symfony 8 · React 19 · MySQL · Docker',
     lede: 'A web platform to search, view and manage self-service laundromats across France.',
-    link: {
-      label: 'View on Figma',
-      href: 'https://www.figma.com/design/4LHQzPCwQHcdOHUJcfkE4l/Laundry-Map?m=auto&t=0SRQWvNuEghrPoWL-1',
-    },
+    links: [
+      {
+        label: 'View live',
+        href: 'https://laundrymap.yacineguerda.fr',
+      },
+      {
+        label: 'View on Figma',
+        href: 'https://www.figma.com/design/4LHQzPCwQHcdOHUJcfkE4l/Laundry-Map?m=auto&t=0SRQWvNuEghrPoWL-1',
+      },
+      {
+        label: 'Grafana (admin only)',
+        href: 'https://grafana.yacineguerda.fr',
+      },
+      {
+        label: 'Uptime Kuma (admin only)',
+        href: 'https://kuma.yacineguerda.fr',
+      },
+      {
+        label: 'Traefik dashboard (admin only)',
+        href: 'https://traefik.yacineguerda.fr',
+      },
+    ],
     images: [
       '/projects/laundry-map/Login.png',
       '/projects/laundry-map/Register.png',
