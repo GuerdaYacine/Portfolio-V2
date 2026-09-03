@@ -22,7 +22,7 @@ export function ImageSlider({ images, alt }: ImageSliderProps) {
 
   return (
     <div className="image-slider">
-      <img src={images[index]} alt={`${alt} — image ${index + 1}`} />
+      <img src={images[index]} alt={`${alt} - image ${index + 1}`} />
 
       {hasMultiple && (
         <>

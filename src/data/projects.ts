@@ -73,6 +73,13 @@ export const PROJECTS: Project[] = [
           'The project lets me dig into topics like designing multi-provider architectures, API integration, scraping, data transformation, and separating acquisition from business logic.',
         ],
       },
+      {
+        heading: 'Infrastructure',
+        paragraphs: [
+          'Mealio is designed to join the shared VPS infrastructure I built for my personal projects, alongside Laundry Map and this portfolio: Docker Compose per project, Traefik as the central reverse proxy for TLS and routing, and a common Grafana/Prometheus/Loki/Uptime Kuma stack for observability.',
+          'Its Compose setup already follows that model, an isolated internal network for the backend, database and cache, and only the public-facing service joining the shared network Traefik routes traffic through, even though the project isn\'t deployed there yet while it\'s still under active development.',
+        ],
+      },
     ],
   },
   {
@@ -101,6 +108,14 @@ export const PROJECTS: Project[] = [
           'It\'s nonetheless containerized with Docker to keep deployment simple and reproducible, notably for a future release on my personal infrastructure.',
         ],
       },
+      {
+        heading: 'Infrastructure',
+        paragraphs: [
+          'This site is deployed on the same personal VPS as Laundry Map and Mealio, behind a single Traefik reverse proxy that terminates TLS (Let\'s Encrypt) and routes each domain to its own Docker Compose stack.',
+          'Even though it\'s just a static build served by nginx with no backend of its own, it benefits from the same shared observability stack as the other projects , Prometheus and cAdvisor for container metrics, Loki for logs, Grafana to visualize all of it, and Uptime Kuma for external availability checks.',
+          'The server itself is locked down with ufw, open only on SSH, HTTP and HTTPS, and fail2ban to block brute-force attempts on SSH.',
+        ],
+      },
     ],
   },
   {
@@ -123,11 +138,12 @@ export const PROJECTS: Project[] = [
       '/projects/laundry-map/MapAndFilter.png',
       '/projects/laundry-map/Detail.png',
       '/projects/laundry-map/Comments.png',
-      '/projects/laundry-map/Avis.png',
       '/projects/laundry-map/ProfilReviews.png',
       '/projects/laundry-map/Profil.png',
       '/projects/laundry-map/EditProfil.png',
+      '/projects/laundry-map/DashAdmin.png',
       '/projects/laundry-map/AddLaundry.png',
+      '/projects/laundry-map/Avis.png',
       '/projects/laundry-map/Action.png',
     ],
     sections: [
@@ -185,12 +201,14 @@ export const PROJECTS: Project[] = [
         ],
       },
       {
-        heading: 'Observability',
+        heading: 'Infrastructure',
         paragraphs: [
-          'This is also the project where I went furthest on operating the application.',
-          'Prometheus and cAdvisor are used for metrics collection, Grafana for visualizing them, Loki to centralize logs, and Uptime Kuma to monitor service availability. Traefik acts as the reverse proxy.',
-          'The goal wasn\'t simply to deploy the application, but to have visibility into how it behaves once in production: service availability, container metrics, logs, and the overall state of the infrastructure.',
-          'The project let me work across an application\'s whole lifecycle, from development and data management through to deployment and operations.',
+          'This is also the project where I went furthest on operating the application, not just building it.',
+          'It runs on a personal VPS shared with my other projects, behind a single Traefik instance acting as the reverse proxy for all of them: it terminates TLS (Let\'s Encrypt, renewed automatically) and routes each domain to the right Docker Compose stack by container labels, so adding a new project only means adding labels, not touching a shared nginx config by hand.',
+          'Each project keeps its own isolated Docker network for its backend, database and cache, and only exposes the one service that actually needs to be public (here, the nginx container in front of PHP-FPM and the frontend) to the network Traefik routes through.',
+          'Prometheus and cAdvisor collect container-level metrics, node-exporter covers the VPS itself, Loki and Promtail centralize logs from every container on the server, Grafana visualizes all of it, and Uptime Kuma checks external availability of each domain. The server is also locked down with ufw (only SSH/HTTP/HTTPS open) and fail2ban against SSH brute-force attempts.',
+          'The goal wasn\'t simply to deploy the application, but to have real visibility into how it behaves once in production: service availability, container metrics, logs, and the overall state of the infrastructure.',
+          'The project let me work across an application\'s whole lifecycle, from development and data management through to deployment and day-to-day operations.',
         ],
       },
     ],
