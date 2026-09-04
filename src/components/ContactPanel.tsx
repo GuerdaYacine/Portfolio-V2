@@ -22,8 +22,12 @@ export function ContactPanel() {
   })
 
   return (
-    <aside className="col-contact">
-      <a className="contact-panel" href="mailto:guerda.yacine60100@gmail.com">
+    <aside id="contact" className="col-contact">
+      <a
+        className="contact-panel"
+        href="/Curriculum_vitae_Yacine_Guerda.pdf"
+        download="Curriculum_vitae_Yacine_Guerda.pdf"
+      >
         <h2 className="contact-panel__title">
           Get in
           <br />
