@@ -93,6 +93,9 @@ export const PROJECTS: Project[] = [
     images: [
       '/projects/portfolio/Portfolio.png',
       '/projects/portfolio/Project.png',
+      '/projects/portfolio/Kuma.png',
+      '/projects/portfolio/Grafana.png',
+      '/projects/portfolio/Traefik.png',
     ],
     sections: [
       {
